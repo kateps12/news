@@ -24,9 +24,21 @@ get "/map" do #/map is just a random path at the moment with a random name
 current_temperature = forecast["currently"]["temperature"]
 current_conditions = forecast["currently"]["summary"]
 
+@url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=eca1d8895efa4e26811dece4f7ff13c6"
+news = HTTParty.get(@url).parsed_response.to_hash
+headlines = news["articles"]
+
+#for source in headlines
+ # puts "will this show the XYZ #{source[:"source"][:"name"]}"
+#end
+
 #fix extended forecast somehow
 
-"In #{lat_long[0]} #{lat_long[1]}, it is currently #{current_temperature} and #{current_conditions}.
+"#{headlines[0]["source"]["name"]} #{headlines[0]["author"]} #{headlines[0]["title"]} #{headlines[0]["content"]}#{headlines[0]["url"]}... 
+<p></p>
+<p></p>
+<p></p>
+In #{lat_long[0]} #{lat_long[1]}, it is currently #{current_temperature} and #{current_conditions}.
 Extended forecast:
 A high temperature of #{forecast["daily"]["data"][0]["temperatureHigh"]} and #{forecast["daily"]["data"][0]["summary"]}
 A high temperature of #{forecast["daily"]["data"][1]["temperatureHigh"]} and #{forecast["daily"]["data"][1]["summary"]}
@@ -44,5 +56,7 @@ A high temperature of #{forecast["daily"]["data"][7]["temperatureHigh"]} and #{f
 #url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=eca1d8895efa4e26811dece4f7ff13c6"
 #news = HTTParty.get(url).parsed_response.to_hash
 # news is now a Hash you can pretty print (pp) and parse for your output
+
+
 
 end

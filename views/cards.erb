@@ -18,16 +18,22 @@
     <!-- Your own CSS -->
     <link rel="stylesheet" href="/styles.css">
 
-    <title>Geocoding</title>
+    <title>Cards</title>
   </head>
   <body>
 
     <div class="container mt-5">
-      <h1>Geocoding</h1>
-      <form action="/map">
-       <input type="text" name="q">
-       <button type="submit">Get Information</submit>
-       </form>
+      <h1>KIEI-451 Casino!</h1>
+      <div class="row">
+        <% for card in @poker_hand %>
+            <div class="col-sm-2">
+                <img src="http://golearntocode.com/images/cards/<%= card %>.png" class="img-fluid">
+            </div>
+        <% end %>
+      </div>
+      <p>
+        <a href="/" class="btn btn-primary">Deal Again!</a>
+      </p>
     </div>
 
     <!-- Optional JavaScript -->
