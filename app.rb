@@ -10,7 +10,7 @@ before { puts "Parameters: #{params}" }
 ForecastIO.api_key = "34a5c5394a5b9ab52c00af35bd1959e1"
 
 get "/" do
-  # show a view that asks for the location
+  # show a view that asks for the location and displays map
 
 @lat = rand(-90.0..90.0)  
 @long = rand(-180.0..180.0)
