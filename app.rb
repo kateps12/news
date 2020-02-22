@@ -10,23 +10,39 @@ before { puts "Parameters: #{params}" }
 ForecastIO.api_key = "34a5c5394a5b9ab52c00af35bd1959e1"
 
 get "/" do
-  # show a view that asks for the location and displays map
-
-@lat = rand(-90.0..90.0)  
-@long = rand(-180.0..180.0)
-@lat_long = "#{@lat},#{@long}" 
-
-results = Geocoder.search("Evanston, IL")
-results.first.coordinates #=> [42.0574063,-87.6722787]
-
+  view "geocode"
 end
 
-get "/news" do
-  # do everything else
+get "/map" do #/map is just a random path at the moment with a random name
+  results = Geocoder.search(params["q"])
+  lat_long = results.first.coordinates # => [lat, long]
+  @lat = lat_long[0] 
+  @long = lat_long[1] 
 
-  #news API code: eca1d8895efa4e26811dece4f7ff13c6
-url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=eca1d8895efa4e26811dece4f7ff13c6"
-news = HTTParty.get(url).parsed_response.to_hash
+  forecast = ForecastIO.forecast(@lat,@long).to_hash
+
+current_temperature = forecast["currently"]["temperature"]
+current_conditions = forecast["currently"]["summary"]
+
+#fix extended forecast somehow
+
+"In #{lat_long[0]} #{lat_long[1]}, it is currently #{current_temperature} and #{current_conditions}.
+Extended forecast:
+A high temperature of #{forecast["daily"]["data"][0]["temperatureHigh"]} and #{forecast["daily"]["data"][0]["summary"]}
+A high temperature of #{forecast["daily"]["data"][1]["temperatureHigh"]} and #{forecast["daily"]["data"][1]["summary"]}
+A high temperature of #{forecast["daily"]["data"][2]["temperatureHigh"]} and #{forecast["daily"]["data"][2]["summary"]}
+A high temperature of #{forecast["daily"]["data"][3]["temperatureHigh"]} and #{forecast["daily"]["data"][3]["summary"]}
+A high temperature of #{forecast["daily"]["data"][4]["temperatureHigh"]} and #{forecast["daily"]["data"][4]["summary"]}
+A high temperature of #{forecast["daily"]["data"][5]["temperatureHigh"]} and #{forecast["daily"]["data"][5]["summary"]}
+A high temperature of #{forecast["daily"]["data"][6]["temperatureHigh"]} and #{forecast["daily"]["data"][6]["summary"]}
+<p></p>
+A high temperature of #{forecast["daily"]["data"][7]["temperatureHigh"]} and #{forecast["daily"]["data"][7]["summary"]}"
+
+  #do everything else
+  #results = Geocoder.search(params["q"])
+#news API code: eca1d8895efa4e26811dece4f7ff13c6
+#url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=eca1d8895efa4e26811dece4f7ff13c6"
+#news = HTTParty.get(url).parsed_response.to_hash
 # news is now a Hash you can pretty print (pp) and parse for your output
 
 end
