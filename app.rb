@@ -26,6 +26,7 @@ current_conditions = forecast["currently"]["summary"]
 
 @url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=eca1d8895efa4e26811dece4f7ff13c6"
 news = HTTParty.get(@url).parsed_response.to_hash
+
 headlines = news["articles"]
 
 #for source in headlines
@@ -34,7 +35,7 @@ headlines = news["articles"]
 
 #fix extended forecast somehow
 
-"#{headlines[0]["source"]["name"]} #{headlines[0]["author"]} #{headlines[0]["title"]} #{headlines[0]["content"]}#{headlines[0]["url"]}... 
+"#{headlines[0]["source"]["name"]} #{headlines[0]["author"]} #{headlines[0]["title"]} #{headlines[0]["content"]}#{headlines[0]["url"]}
 <p></p>
 <p></p>
 <p></p>
