@@ -19,6 +19,7 @@ get "/news" do #/map is just a random path at the moment with a random name
   @lat = lat_long[0] 
   @long = lat_long[1] 
   @lat_long = "#{@lat},#{@long}" 
+  @location = results.first.city
 
   forecast = ForecastIO.forecast(@lat,@long).to_hash
 

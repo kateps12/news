@@ -22,39 +22,91 @@
   </head>
   <body>
 
-
-
-
-
-
   
-    <div class="container mt-5">
-        <h1>News</h1>
-        <div class="row">
-        <p>
-        <h1>In <%= @lat_long %>, it is currently <%= @current_temperature %> with <%= @current_conditions %> conditions.</h1>
-        <h1>The extended forecast is </h1>
-             <ul>
-                <% for extended in @day %>  
-                    <li><%= extended["temperatureHigh"] %></li>
-                    <li><%= extended["summary"] %> </li>   
-                <% end %>
-             </ul>
-        </p>
-        <ul> 
-            <% for article in @headlines %>
-              <li><%= article["title"]%></li>
-              #<li><%= article["source"]["name"]%></li> Primary source appears within article title. 
-              #<li><%= article["author"]%></li>
-              <li><%= article["content"]%></li>
-              <li> <a href="<%= article["url"] %>"> <%= article["url"] %></a></li>
-            <% end %>
-        </ul>
-        </div>
-        <p>
-        <a href="/" class="btn btn-secondary">Search New Location</a>
-        </p>
+<div class="container mt-5">
+  <h1 class="responsetitle">Weather and Headline News</h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"> <i class="fas fa-sun"> </i></div>
+    <div class="col-md-3"> <i class="fas fa-cloud"> </i></div>
+    <div class="col-md-3"> <i class="fas fa-wind"> </i></div>
+    <div class="col-md-3"> <i class="fas fa-cloud-rain"> </i></div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+    <p>
+      <h3 class="firstresponse">In <%= @location %>, it is currently <%= @current_temperature %> degrees with <%= @current_conditions %> conditions.</h3>
+      <h4 class="extended">The extended forecast is </h4>
+    </p>
     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">  
+      <% for extended in @day %>  
+        <div class="row"> 
+          <div class="col-md-2">
+            <%= Time.at(extended["time"]).strftime("%a, %b %d") %>
+          </div>   
+          <div class="col-md-8"> 
+            A high of <%= extended["temperatureHigh"] %> degrees with the following conditions: <%= extended["summary"] %> 
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+</div>
+
+###################
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"> <i class="far fa-newspaper"></i></div>
+    <div class="col-md-9"> </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="firstresponse">In <%= @location %>, the top news stories are:</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">  
+      <% for article in @headlines %> 
+        <div class="row"> 
+          <div class="col-md-2">
+            <%= article["title"]%>
+          </div>   
+          <div class="col-md-6"> 
+            <%= article["content"]%>
+          </div>
+          <div class="col-md-2"> 
+            <a href="<%= article["url"] %>"> <%= article["url"] %></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+</div>
+
+
+
+###################
+
+
+
+<div class="container">  
+  <a href="/" class="btn btn-secondary">Search New Location</a>
+</div>
    
 
     <!-- Optional JavaScript -->
