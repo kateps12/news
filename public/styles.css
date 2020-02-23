@@ -1,0 +1,49 @@
+body{
+    background: lightgray;
+}
+
+.jumbotron {
+    background: lightslategray;
+}
+
+.display-4 {
+    font-size: 75px;
+    color: darkblue;
+}
+.lead {
+    color: rgb(51,63,80);
+}
+.indexp {
+    color: rgb(104,25,12);
+    font-size: 18px;
+}
+img {
+    height: 250px;
+    width: 330px;
+    box-shadow: rgb(255,249,231);
+    border-style: solid;
+}
+img.caryl{
+    height: 350px;
+    width: 300px;
+}
+.btn-secondary {
+    background-color: rgb(232,149,140);
+    color:  rgb(255,249,231);
+    font-family: 'Acme', sans-serif;
+    font-size: 25px;
+}
+
+.btn-light {
+    background-color: rgb(232,149,140);
+    font-family: 'Libre Baskerville', serif;
+    color: rgb(255,249,231);
+}
+
+.fas {
+    color:black;
+}
+
+.footertext {
+    color:black;
+}

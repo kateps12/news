@@ -18,25 +18,23 @@
     <!-- Your own CSS -->
     <link rel="stylesheet" href="/styles.css">
 
-    <title>Geocoding</title>
+    <title>Location</title>
   </head>
   <body>
 
+      <div class="jumbotron">
+        <h1 class="display-4"><strong>Weather and News</strong></h1>
+        <p class="lead"><strong>Get the latest weather and news in your area.</strong></p>
+      </div>
+
     <div class="container mt-5">
-      <h1>Geocoding</h1>
-      <form action="/map">
+      <h1>Enter your location of interest:</h1>
+      <form action="/news">
        <input type="text" name="q">
        <button type="submit">Get Information</submit>
        </form>
     </div>
 
-    #<div>
-     #   <ul>
-      #      <% for item in @headlines %>
-       #         <li><%= item %></li>
-        #    <% end %>
-        #</ul>
-    #</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
