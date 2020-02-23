@@ -29,13 +29,18 @@ news = HTTParty.get(@url).parsed_response.to_hash
 
 headlines = news["articles"]
 
+for authors in headlines[]
+    headlines << "#{authors} did this work?????"
+end
+#@headlines
 #for source in headlines
  # puts "will this show the XYZ #{source[:"source"][:"name"]}"
 #end
 
 #fix extended forecast somehow
 
-"#{headlines[0]["source"]["name"]} #{headlines[0]["author"]} #{headlines[0]["title"]} #{headlines[0]["content"]}#{headlines[0]["url"]}
+#{headlines[0]["source"]["name"]} #{headlines[0]["author"]} #{headlines[0]["title"]} #{headlines[0]["content"]}#{headlines[0]["url"]}
+"#{headlines}
 <p></p>
 <p></p>
 <p></p>
@@ -58,6 +63,6 @@ A high temperature of #{forecast["daily"]["data"][7]["temperatureHigh"]} and #{f
 #news = HTTParty.get(url).parsed_response.to_hash
 # news is now a Hash you can pretty print (pp) and parse for your output
 
-
+#view "ask"
 
 end

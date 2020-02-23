@@ -23,8 +23,19 @@
   <body>
 
     <div class="container mt-5">
-      <h1>News</h1>
+        <h1>News</h1>
+        <div class="row">
+        <% for card in @headlines %>
+            <div class="col-sm-2">
+            <img src="http://golearntocode.com/images/cards/<%= card %>.png" class="img-fluid">
+            </div>
+        <% end %>
+        </div>
+        <p>
+       # <a href="/" class="btn btn-primary">Deal Again!</a>
+        </p>
     </div>
+   
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
