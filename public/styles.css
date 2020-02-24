@@ -10,16 +10,28 @@ body{
     font-family: 'Acme', sans-serif;
     font-size: 45px;
     color: darkblue;
-    background-color: #615554;
-    background-image: url(http://www.transparenttextures.com/patterns/light-paper-fibers.png);
 }
 
 i {
-    font-size: 80px;
+    font-size: 50px;
+}
+
+.fas {
+    color: rgb(34,42,53);
+    height: 75px;
+}
+
+.far {
+    color: rgb(34,42,53)n;
+    height: 75px;
 }
 
 .container {
     margin-bottom: 30px;
+}
+
+.betweenarticles {
+    margin-bottom: 15px;
 }
 
 .extended {
@@ -42,8 +54,8 @@ i {
 }
 
 .btn-secondary {
-    background-color: rgb(32,56,100);
-    color:  lightslategray;
+    background-color: lightcyan;
+    color:  darkblue;
     font-family: 'Acme', sans-serif;
-    font-size: 25px;
+    font-size: 15px;
 }

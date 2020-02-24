@@ -21,93 +21,90 @@
     <title>News</title>
   </head>
   <body>
-
   
 <div class="container mt-5">
-  <h1 class="responsetitle">Weather and Headline News</h1>
+  <div class="row">
+    <div class="col-md-8">    
+      <h1 class="responsetitle">Weather and Headline News</h1>
+    </div>
+    <div class="col-md-4"><a href="/" class="btn btn-secondary">Search New Location</a>
+    </div>
+  </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3"> <i class="fas fa-sun"> </i></div>
-    <div class="col-md-3"> <i class="fas fa-cloud"> </i></div>
-    <div class="col-md-3"> <i class="fas fa-wind"> </i></div>
-    <div class="col-md-3"> <i class="fas fa-cloud-rain"> </i></div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-    <p>
-      <h3 class="firstresponse">In <%= @location %>, it is currently <%= @current_temperature %> degrees with <%= @current_conditions %> conditions.</h3>
-      <h4 class="extended">The extended forecast is </h4>
-    </p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-10">  
-      <% for extended in @day %>  
-        <div class="row"> 
-          <div class="col-md-2">
-            <%= Time.at(extended["time"]).strftime("%a, %b %d") %>
-          </div>   
-          <div class="col-md-8"> 
-            A high of <%= extended["temperatureHigh"] %> degrees with the following conditions: <%= extended["summary"] %> 
-          </div>
+    <div class="col-md-8">  
+      <div class="row">
+        <div class="col-md-3"> <i class="far fa-newspaper"></i></div>
+        <div class="col-md-9"> </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="firstresponse"><strong>Top news stories in <%= @location %></strong></h3>
         </div>
-      <% end %>
-    </div>
-    <div class="col-md-1">
-    </div>
-  </div>
-</div>
-
-###################
-<div class="container">
-  <div class="row">
-    <div class="col-md-3"> <i class="far fa-newspaper"></i></div>
-    <div class="col-md-9"> </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h3 class="firstresponse">In <%= @location %>, the top news stories are:</h3>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-10">  
-      <% for article in @headlines %> 
-        <div class="row"> 
-          <div class="col-md-2">
-            <%= article["title"]%>
-          </div>   
-          <div class="col-md-6"> 
-            <%= article["content"]%>
-          </div>
-          <div class="col-md-2"> 
-            <a href="<%= article["url"] %>"> <%= article["url"] %></a>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">  
+          <% for article in @headlines %> 
+            <div class="row"> 
+              <div class="col-md-12">
+                <strong><em><%= article["title"]%></em></strong>
+              </div>   
+            </div>
+            <div class="row">
+              <div class="col-md-12"> 
+                <%= article["content"]%>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12"> 
+                <a href="<%= article["url"] %>"> <%= article["url"] %></a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12"> 
+                <p class="betweenarticles"></p>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
-    <div class="col-md-1">
+    
+    <div class="col-md-4"> 
+      <div class="row">
+        <div class="col-md-3"> <i class="fas fa-sun"> </i></div>
+        <div class="col-md-3"> <i class="fas fa-cloud"> </i></div>
+        <div class="col-md-3"> <i class="fas fa-wind"> </i></div>
+        <div class="col-md-3"> <i class="fas fa-cloud-rain"> </i></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="firstresponse"><strong><%= @location %> Weather</strong></h3>
+            <p><strong><em>Current temperature is <%= @current_temperature %> degrees</em></strong></p>
+            <p><strong><em>Current conditions are <%= @current_conditions %></em></strong></p>
+        <h4 class="extended">The extended forecast is </h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-11">  
+          <% for extended in @day %>  
+            <div class="row"> 
+              <div class="col-md-2"> <strong><%= Time.at(extended["time"]).strftime("%a, %b %d") %></strong>
+              </div>   
+              <div class="col-md-9"> A high of <%= extended["temperatureHigh"] %> degrees with the following conditions: <%= extended["summary"] %> 
+              </div>
+            </div>
+            <hr class="my-4">
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
-
-###################
-
-
-
-<div class="container">  
-  <a href="/" class="btn btn-secondary">Search New Location</a>
-</div>
-   
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
